@@ -2,6 +2,7 @@ package br.com.juniorcintra.controller;
 
 import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,11 @@ public class PrimeiraController {
   @PostMapping("/metodoComListHeaders")
   public String metodoComBody(@RequestHeader Map<String, String> headers) {
     return "O nome do usuario é: " + headers.entrySet();
+  }
+
+  @GetMapping("/metodoResponseEntity")
+  public ResponseEntity<Object> metodoResponseEntity() {
+    return ResponseEntity.status(200).body("Sucesso!");
   }
 
   record Usuario(String id, String name) {}
